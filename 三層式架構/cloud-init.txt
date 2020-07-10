@@ -1,0 +1,17 @@
+#cloud-config
+
+# run commands
+
+runcmd:
+ - sudo add-apt-repository ppa:ondrej/php -y
+ - sudo apt-get update -y
+ - sudo apt-get install apache2 php5.6 php5.6-mysql -y
+ - sudo wget https://gitlab.com/ecloudture/aws/ect-course/aws-architecture/raw/master/02-implement-lamp-structure/index.php
+ - sudo wget https://gitlab.com/ecloudture/aws/ect-course/aws-architecture/raw/master/02-implement-lamp-structure/login.php
+ - sudo wget https://gitlab.com/ecloudture/aws/ect-course/aws-architecture/raw/master/02-implement-lamp-structure/style.css
+ - sudo mv index.php /var/www/html/
+ - sudo mv login.php /var/www/html/
+ - sudo mv style.css /var/www/html/
+ - sudo rm /var/www/html/index.html
+ - sudo systemctl start apache2.service
+ - sudo systemctl enable apache2.service
